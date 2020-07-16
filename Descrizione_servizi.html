@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>FAQ - Brand</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aclonica">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Adamina">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Akronim">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/simple-line-icons.min.css">
+    <link rel="stylesheet" href="assets/css/carica2.css">
+    <link rel="stylesheet" href="assets/css/Contact-FormModal-Contact-Form-with-Google-Map.css">
+    <link rel="stylesheet" href="assets/css/Drag-Drop-File-Upload.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
+    <link rel="stylesheet" href="assets/css/login.css">
+    <link rel="stylesheet" href="assets/css/Map-Clean.css">
+    <link rel="stylesheet" href="assets/css/Navigation-with-Search.css">
+    <link rel="stylesheet" href="assets/css/reimpostapassword.css">
+    <link rel="stylesheet" href="assets/css/smoothproducts.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+
+<body>
+   
+    <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar" style="filter: saturate(200%);font-family: Akronim, cursive;font-size: 12px;height: 90.375px;">
+       
+        <div class="container"><a class="navbar-brand logo" href="index.html" style="font-family: Akronim, cursive;font-size: 37px;color: rgba(6,3,0,0.9);width: 73.9531px;letter-spacing: 5px;">BGnotes</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div
+                class="collapse navbar-collapse" id="navcol-1" style="font-family: Montserrat, sans-serif;width: 987.312px;height: 24px;margin: -1px;padding: -35px;">
+                <ul class="nav navbar-nav ml-auto" style="width: 345px;height: 37px;margin-left: 127.234px;margin-bottom: 0px;margin-right: 0px;margin-top: 0px;">
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li class="nav-item" role="presentation" style="width: 32px;height: 35px;margin-right: 48px;"><a class="nav-link active " href="home.html" style="font-family: Adamina, serif;">HOME</a></li>
+                    <li class="nav-item" id="navLogin" role="presentation"><a class="nav-link active" href="loginp.html" style="font-family: Adamina, serif;">LOG IN</a></li>
+                    <li class="nav-item" id="navRegistrati" role="presentation"><a class="nav-link active" href="registration.html" style="font-family: Adamina, serif;">REGISTRATI</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="about-us.html" style="font-family: Adamina, serif;">ABOUT US</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="faq.html" style="font-family: Adamina, serif;width: 75.9375px;">FAQ</a></li>
+					<li class="nav-item" id="navLoggato" role="presentation"></li>
+                </ul>
+        </div>
+        </div>
+    </nav>
+    <main class="page faq-page">
+        <section class="clean-block clean-faq dark" style="height: 749px;background-image: url(assets/img/sfondo1.png);">
+            <div class="container" style="color: rgb(0,0,0);width: 1137px;height: 748px;padding: -24px;background-size: auto;">
+                <div class="block-heading">
+                    <h2 class="text-info" style="color: rgb(197,153,41);font-family: Adamina, serif;">Descrizione dei servizi proposti</h2>
+                    <p style="font-family: Adamina, serif;">Di seguito cliccando i pulsanti verranno fornite le informazioni.</p>
+                </div>
+				<p>
+  <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+  LOGIN - Entra
+  </a>
+</p>
+
+<div class="collapse" id="collapseExample">
+  <div class="card card-body">
+  Dalla pagina http://localhost/phpcrud/loginp.php cliccando il pulsante "Entra" viene invocato in AJAX una chiamata alla pagina <br>
+  http://localhost/phpcrud/servizi_bgnotes.php <br>
+  Alla pagina sopra citata vengono passati in POST 2 parametri : <br>
+  nome_servizio : "login"  | semplice stringa <br>
+  parametri : JSON.stringify(obj) | array formattato in una stringa di tipo JSON, dentro l'array inseriremo la nostra "email" e la nostra "password".<br><br>
+  
+  Il servizio risponderà con le variabili : <br>
+  statusCode  | codice di risposta della chiamata ( 404 risorsa non trovata, 200 richiesta andata con successo, 403 non autorizzato ecc ) <br><br>
+  success | data - conterrà la risposta che il servizio chiamato ci manderà se la richiesta è andata a buon fine <br><br>
+	   | data conterrà nel nostro caso "login ok" se l'utente è registrato ed email e password sono corretti, se l'esito è "login ok" verrà avviata un'altra chiamata in ajax chiamando <br>
+	   | "http://localhost/phpcrud/local_session.php", che inizializzerà la sessione.<br><br>
+  error : data - conterrà il messaggio che ha causato l'errore nell'esito della richiesta.
+  <br><br>
+  esempio chiamata :<br>
+  $.ajax({<br>
+                 type: "POST",
+                 url: "http://localhost/phpcrud/servizi_bgnotes.php",<br>
+                 data: { nome_servizio: "login",parametri:JSON.stringify(obj) },<br>
+				  success: function(data) {<br>
+                 // on successfull return it will alert the data <br>
+                 }
+     </div>
+</div>
+
+<p>
+  <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample2">
+  LOGIN - Log In With Google (Servizio di oAuth ESTERNO fornito da GOOGLE tramite apikey) 
+  </a>
+</p>
+<div class="collapse" id="collapseExample2">
+  <div class="card card-body">
+  Dalla pagina http://localhost/phpcrud/loginp.php cliccando il pulsante "Sing In With Google" viene invocato in PHP la funzione $gClient->createAuthUrl();<br>
+  $gClient è un API messa a disposizione da GOOGLE per l'autenticazione tramite oAuth <br>
+  Per effettuare la chiamata è necessario creare un file di configurazione impostando le variabili richieste dal Google_Client();<br>
+  setClientId : client id fornito in fase di registrazione al servizio oAuth sul sito di google dedicato ai developers.<br>
+  setClientSecret : chiave segreta fornita in fase di registrazione al servizio oAuth sul sito di google dedicato ai developers.<br>
+  setApplicationName : nome dell'applicazione per la quale è richiesta l'autenticazione tramite google.<br>
+  setRedirectUri : URI di reindirizzamento nel caso in cui l'esito del login tramite google sia andato a buon fine.
+  addScope : scope del servizio di oAuth
+	<br><br>
+	
+  nell'url di callback verrà intercettata la risposta del servizio esterno il quale conterrà alcune informazioni nel seguente formato : <br><br>
+  object(Google_Service_Oauth2_Userinfoplus)#47 (14) <br>
+  { ["internal_gapi_mappings":protected]=> array(3) <br>
+  { ["familyName"]=> string(11) "family_name" ["givenName"]=> string(10) "given_name" ["verifiedEmail"]=> string(14) "verified_email" } <br>
+  ["email"]=> string(23) "EMAIL DELLA PERSONA" <br>
+  ["familyName"]=> string(5) "Cognome" <br>
+  ["gender"]=> NULL <br>
+  ["givenName"]=> string(6) "Nome" <br>
+  ["hd"]=> NULL <br>
+  ["id"]=> string(21) "Numero identificativo dell'account google" <br>
+  ["link"]=> NULL <br>
+  ["locale"]=> string(2) "it" <br>
+  ["name"]=> string(12) "Nome Cognome" <br>
+  ["picture"]=> string(83) "LINK alla foto profilo dell'account google" <br>
+  ["verifiedEmail"]=> bool(true) <br>
+  ["modelData":protected]=> array(3) { ["verified_email"]=> bool(true) ["given_name"]=> string(6) "Nome" ["family_name"]=> string(5) "Cognome" } <br>
+  ["processed":protected]=> array(0) { } }
+     </div>
+	 
+	 
+	 
+	 
+
+</div>
+
+<p>
+  <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample3" role="button" aria-expanded="false" aria-controls="collapseExample3">
+  Reset Password ( servizio SMTP esterno fornito da GOOGLE tramite abilitazione dell'account di posta)
+  </a>
+</p>
+
+<div class="collapse" id="collapseExample3">
+  <div class="card card-body">
+  Dalla pagina http://localhost/phpcrud/reimposta_password.html cliccando il pulsante "Richiedi password" viene invocato in AJAX una chiamata alla pagina <br>
+  http://localhost/phpcrud/servizi_bgnotes.php <br>
+  Alla pagina sopra citata vengono passati in POST 2 parametri : <br>
+  nome_servizio : "reset_password"  | semplice stringa <br>
+  parametri : JSON.stringify(obj) | array formattato in una stringa di tipo JSON, dentro l'array inseriremo la nostra "email" .<br><br>
+  
+  Il servizio risponderà con le variabili : <br>
+  statusCode  | codice di risposta della chiamata ( 404 risorsa non trovata, 200 richiesta andata con successo, 403 non autorizzato ecc ) <br><br>
+  success | data - conterrà la risposta che il servizio chiamato ci manderà se la richiesta è andata a buon fine <br><br>
+	   | data se la richiesta è andata a buon fine il messaggio di risposta del server sarà :"Se la mail è registrata riceverà una mail con la password.", a questo punto se la mail inserita è registrata verrà inviata una mail contenente la password. <br><br>
+  error : data - conterrà il messaggio che ha causato l'errore nell'esito della richiesta.
+  <br><br>
+  
+  Per l'invio della posta è stato configurato un server SMTP in locale impostando i parametri :<br>
+  smtp_server= indirizzo del server SMTP di GOOGLE <br>
+  smtp_port=porta per l'accesso al server SMTP esterno <br>
+  auth_username= indirizzo di posta elettronica che si utilizzerà per inviare le mail - NECESSARIO PER L'AUTENTICAZIONE <br>
+  auth_password= password dell'indirizzo di posta elettronica che si utilizzerà per inviare le mail - NECESSARIO PER L'AUTENTICAZIONE <br><br>
+
+  esempio chiamata :<br>
+  $.ajax({<br>
+                 type: "POST",
+                 url: "http://localhost/phpcrud/servizi_bgnotes.php",<br>
+                 data: { nome_servizio: "reset_password",parametri:JSON.stringify(obj) },<br>
+				  success: function(data) {<br>
+                 // on successfull return it will alert the data <br>
+                }<br>
+		 });
+     </div>
+</div>
+
+
+<p>
+  <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample4" role="button" aria-expanded="false" aria-controls="collapseExample4">
+   Cerca Documenti
+  </a>
+</p>
+
+<div class="collapse" id="collapseExample4">
+  <div class="card card-body">
+  Dalla pagina http://localhost/phpcrud/catalogomaterie.html cliccando i pulsanti di filtro viene invocato in AJAX una chiamata alla pagina <br>
+  http://localhost/phpcrud/servizi_bgnotes.php <br>
+  Alla pagina sopra citata vengono passati in POST 2 parametri : <br>
+  nome_servizio : "get_documenti"  | semplice stringa <br>
+  parametri : JSON.stringify(obj) | array formattato in una stringa di tipo JSON, dentro l'array inseriremo il nostro filtro "tipo" che conterrà il tipo di filtro impostato (per categoria) .<br><br>
+  
+  Il servizio risponderà con le variabili : <br>
+  statusCode  | codice di risposta della chiamata ( 404 risorsa non trovata, 200 richiesta andata con successo, 403 non autorizzato ecc ) <br><br>
+  success | data - conterrà la risposta che il servizio chiamato ci manderà se la richiesta è andata a buon fine <br><br>
+	   | data se la richiesta è andata a buon fine il messaggio di risposta del server sarà una stringa in HTML contenente dei visualizzatori grafici con all'interno il percorso dei file salvati sul server, un pulsante di download e uno di apertura. <br><br>
+  error : data - conterrà il messaggio che ha causato l'errore nell'esito della richiesta.
+  <br><br>
+  
+  esempio chiamata :<br>
+  var obj = {};
+	obj.tipo="Informatica";
+  $.ajax({<br>
+                 type: "POST",
+                 url: "http://localhost/phpcrud/servizi_bgnotes.php",<br>
+                 data: { nome_servizio: "get_documenti",parametri:JSON.stringify(obj) },<br>
+				  success: function(data) {<br>
+                 // on successfull return it will alert the data <br>
+                 }<br>
+		 });
+     </div>
+</div>
+
+<p>
+  <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample5" role="button" aria-expanded="false" aria-controls="collapseExample5">
+   Visualizza richieste gruppi
+  </a>
+</p>
+
+<div class="collapse" id="collapseExample5">
+  <div class="card card-body">
+  Dalla pagina http://localhost/phpcrud/mappa.html cliccando il pulsante "Invia Richiesta" viene invocato in AJAX una chiamata alla pagina <br>
+  http://localhost/phpcrud/servizi_bgnotes.php <br>
+  Alla pagina sopra citata vengono passati in POST 2 parametri : <br>
+  nome_servizio : "get_gruppi"  | semplice stringa <br>
+  parametri : JSON.stringify(obj) | campo facoltativo, non inviarlo o inviare stringa vuota "" .<br><br>
+  
+  Il servizio risponderà con le variabili : <br>
+  statusCode  | codice di risposta della chiamata ( 404 risorsa non trovata, 200 richiesta andata con successo, 403 non autorizzato ecc ) <br><br>
+  success | data - conterrà la risposta che il servizio chiamato ci manderà se la richiesta è andata a buon fine <br><br>
+	   | data se la richiesta è andata a buon fine il messaggio di risposta del server sarà una stringa in HTML contenente una div con una tabella già pronta con dei pulsanti all'interno.I pulsanti chiameranno una funzione con dei parametri già elaborati dal server.Questi parametri saranno poi utilizzati per la visualizzazione sulla mappa della persona/delle persone interessate tramite un servizio esterno. <br><br>
+  error : data - conterrà il messaggio che ha causato l'errore nell'esito della richiesta.
+  <br><br>
+  
+  esempio chiamata :<br>
+  $.ajax({<br>
+                 type: "POST",
+                 url: "http://localhost/phpcrud/servizi_bgnotes.php",<br>
+                 data: { nome_servizio: "get_gruppi",parametri:JSON.stringify(obj) },<br>
+				  success: function(data) {<br>
+                 // on successfull return it will alert the data <br>
+                 }<br>
+		 });
+     </div>
+</div>
+
+<p>
+  <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample6" role="button" aria-expanded="false" aria-controls="collapseExample6">
+   Crea richiesta gruppo
+  </a>
+</p>
+
+<div class="collapse" id="collapseExample6">
+  <div class="card card-body">
+  Dalla pagina http://localhost/phpcrud/mappa.html cliccando il pulsante "Invia Richiesta" viene invocato in AJAX una chiamata alla pagina <br>
+  http://localhost/phpcrud/servizi_bgnotes.php <br>
+  Alla pagina sopra citata vengono passati in POST 2 parametri : <br>
+  nome_servizio : "add_ricerca_gruppo"  | semplice stringa <br>
+  parametri : JSON.stringify(obj) | JSON.stringify(obj) | array formattato in una stringa di tipo JSON, dentro l'array inseriremo "nome","email","categoria","commento","latitudine","longitudine" .<br><br>
+  
+  Il servizio risponderà con le variabili : <br>
+  statusCode  | codice di risposta della chiamata ( 404 risorsa non trovata, 200 richiesta andata con successo, 403 non autorizzato ecc ) <br><br>
+  success | data - conterrà la risposta che il servizio chiamato ci manderà se la richiesta è andata a buon fine <br><br>
+	   | data se la richiesta è andata a buon fine il server risponderà con "Richiesta inserita con successo" e verranno salvati sul database i dati relativi alla richiesta. <br><br>
+  error : data - conterrà il messaggio che ha causato l'errore nell'esito della richiesta.
+  <br><br>
+  
+  esempio chiamata :<br>
+ var obj = {};<br>
+	obj.nome= $("#from_name").val();<br>
+	obj.email = $("#from_email").val();<br>
+	obj.telefono = $("#from_phone").val();<br>
+	obj.categoria = $("#Materieinteressate").val();<br>
+	obj.commento = $("#comments").val();<br>
+    obj.latitudine=position.coords.latitude;<br>
+    obj.longitudine=position.coords.longitude;<br>
+     $.ajax({<br>
+         type: "POST",<br>
+         url: "http://localhost/phpcrud/servizi_bgnotes.php",<br>
+         data: { nome_servizio: "add_ricerca_gruppo",parametri:JSON.stringify(obj) },<br>
+         success: function(data) {<br>
+		 }<br>
+		 });
+     </div>
+</div>
+
+
+             
+        </section>
+    </main>
+    <footer></footer>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+    <script src="assets/js/smoothproducts.min.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <script src="assets/js/Contact-FormModal-Contact-Form-with-Google-Map.js"></script>
+    <script src="assets/js/untitled.js"></script>
+	 <script type="text/javascript"  src="assets/js/GestioneCookie.js">
+	</script>
+	<script>
+	isLogged();
+	</script>
+   
+</body>
+
+
+
+</html>
