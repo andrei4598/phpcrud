@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+      <title>Registrati</title>
+      <script lang="javascript" src="assets/js/registrazioneScript" type="text/javascript"></script>
+      <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aclonica">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Adamina">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Akronim">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
+      <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+      <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+      <link rel="stylesheet" href="assets/fonts/simple-line-icons.min.css">
+      <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
+      <link rel="stylesheet" href="assets/css/carica2.css">
+      <link rel="stylesheet" href="assets/css/Drag-Drop-File-Upload.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
+      <link rel="stylesheet" href="assets/css/Navigation-with-Search.css">
+      <link rel="stylesheet" href="assets/css/smoothproducts.css">
+      <link rel="stylesheet" href="assets/css/untitled-1.css">
+      <link rel="stylesheet" href="assets/css/untitled.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="assets/css/responsive.css">
+   </head>
+   <body>
+      <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar" style="filter: saturate(200%);font-family: Akronim, cursive;font-size: 12px;height: 90.375px;">
+         <div class="container">
+            <a class="navbar-brand logo" href="index.html" style="font-family: Akronim, cursive;font-size: 37px;color: rgba(6,3,0,0.9);width: 73.9531px;letter-spacing: 5px;">BGnotes</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div
+               class="collapse navbar-collapse" id="navcol-1" style="font-family: Montserrat, sans-serif;width: 987.312px;height: 24px;margin: -1px;padding: -35px;">
+               <ul class="nav navbar-nav ml-auto" style="width: 345px;height: 37px;margin-left: 127.234px;margin-bottom: 0px;margin-right: 0px;margin-top: 0px;">
+               </ul>
+               <ul class="nav navbar-nav">
+                  <li class="nav-item" role="presentation" style="width: 32px;height: 35px;margin-right: 48px;"><a class="nav-link active " href="home.html" style="font-family: Adamina, serif;">HOME</a></li>
+                  <li class="nav-item" id="navLogin" role="presentation"><a class="nav-link active" href="loginp.html" style="font-family: Adamina, serif;">LOG IN</a></li>
+                  <li class="nav-item" id="navRegistrati" role="presentation"><a class="nav-link active" href="registration.html" style="font-family: Adamina, serif;">REGISTRATI</a></li>
+                  <li class="nav-item" role="presentation"><a class="nav-link active" href="about-us.html" style="font-family: Adamina, serif;">ABOUT US</a></li>
+                  <li class="nav-item" role="presentation"><a class="nav-link active" href="faq.html" style="font-family: Adamina, serif;width: 75.9375px;">FAQ</a></li>
+                  <li class="nav-item" id="navLoggato" role="presentation"></li>
+               </ul>
+            </div>
+         </div>
+      </nav>
+      <main class="page registration-page" style="margin-bottom: 2px;padding-bottom: 5px; height:100%;">
+         <section class="clean-block clean-form dark" style="background-image: url(assets/img/sfondo1.png);">
+            <div class="container h-5" >
+               <div class="block-heading"></div>
+               <form  name="registrationForm" class="border border-light p-5">
+                  <p class="h4 mb-4 text-center">Registrati su BGnotes</p>
+                  <input name="regName" type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Nome" onchange="return nameCheck()" required autofocus value><br>
+                  <input name="regSurname" type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Cognome" required value><br>
+                  <input name="regEmail" type="email" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="E-mail" required value>
+                  <input name="regPassword" type="password" id="defaultRegisterFormPassword" class="form-control" placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock" data-toggle="tooltip" data-animation="true" data-placement="right" data-trigger="focus" title="At least 8 , max 20 alphanumeric characthers" required value>
+                  <small id="defaultRegisterFormPhoneHelpBlock" class="form-text text-muted mb-4">No carratteri speciali grazie =) </small>
+                  <input  name="regPhone" type="tel" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" id="defaultRegisterPhonePassword" class="form-control" placeholder="Phone number" aria-describedby="defaultRegisterFormPhoneHelpBlock" value>
+                  <small   id="defaultRegisterFormPhoneHelpBlock" class="form-text text-muted mb-4">Opzionale per autenticazione in due passaggi</small>
+                  <button id="regsubbtn" class="btn btn-info my-4 btn-block" type="button">Registrati</button>
+                  <div class="text-center">
+                     <p>Cliccando
+                        <em>Registrati</em> accetti termini e condizioni e trattamento dati.
+                     </p>
+                  </div>
+            </div>
+            </form>
+            </div>
+         </section>
+      </main>
+      <script src="assets/js/jquery.min.js"></script>
+      <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+      <script src="assets/js/smoothproducts.min.js"></script>
+      <script src="assets/js/theme.js"></script>
+      <script src="assets/js/Contact-FormModal-Contact-Form-with-Google-Map.js"></script>
+      <script src="assets/js/untitled.js"></script>
+      <script src="assets/js/registrazioneScript.js"></script>
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+      <script type="text/javascript"  src="assets/js/GestioneCookie.js"></script>
+      <script>
+         isLogged();
+      </script>
+      <script>
+         $(document).ready(function() {
+             $("#regsubbtn").click(function()
+         {
+         var check="true";
+         var nome = /^[a-z ]{4,30}$/i;
+         if(!nome.test(document.registrationForm.regName.value))
+         {
+         check="false";
+         }
+         var nome = /^[a-z ]{4,30}$/i;
+         if(!nome.test(document.registrationForm.regSurname.value))
+         {	
+         check="false";
+         }
+         var email=/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
+         if(!email.test(document.registrationForm.regEmail.value))
+         {
+         check="false";
+         }
+         
+         if(check=="true")
+         {
+         var obj = {};
+         obj.nome = document.registrationForm.regName.value;
+         obj.cognome = document.registrationForm.regSurname.value;
+         obj.email = document.registrationForm.regEmail.value;
+         obj.password = document.registrationForm.regPassword.value;
+         obj.telefono = document.registrationForm.regPhone.value;
+		 //faccio la chiamata in ajax al server che mi darà una risposta.
+         $.ajax({
+         type: "POST",
+         url: "http://localhost/phpcrud/servizi_bgnotes.php",
+         data: { nome_servizio: "registra",parametri:JSON.stringify(obj) },
+         success: function(data) {
+         // on successfull return it will alert the data
+         if(data=="New record created successfully")
+         {
+         window.location.replace("/phpcrud/home.html");
+		 localStorage.setItem("loggato", "true");
+         }
+         else
+         {
+         alert("Messaggio del server: " + data);
+         }
+         
+         document.registrationForm.regName.value="";
+         document.registrationForm.regSurname.value="";
+         document.registrationForm.regEmail.value="";
+         document.registrationForm.regPassword.value="";
+         document.registrationForm.regPhone.value="";
+         
+         }    
+         });
+         }
+         else
+         {
+         alert("formato dei dati non corretto");
+         }
+         });
+         
+          $("#defaultRegisterFormFirstName").change(function()
+         {
+            
+         var nome = /^[a-z ]{4,30}$/i;
+         if(!nome.test(document.registrationForm.regName.value)){
+         $(this).css("border","1px solid red");
+                
+         } else {
+         $(this).css("color","black");
+         $(this).css("border","1px solid #ced4da");
+         }
+                
+         });
+         
+                
+         
+         
+         
+            //Check cognome
+            $("#defaultRegisterFormLastName").change(function()
+         {
+            
+         var nome = /^[a-z ]{4,30}$/i;
+         if(!nome.test(document.registrationForm.regSurname.value)){
+         $(this).css("border","1px solid red");
+         } else {
+         $(this).css("color","black");
+         $(this).css("border","1px solid #ced4da");
+         }
+         });
+         
+         //Check email
+         $("#defaultRegisterFormEmail").change(function()
+         {
+         
+         var email=/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
+         if(!email.test(document.registrationForm.regEmail.value)) {
+         $(this).css("border","1px solid red");
+         } else {
+         $(this).css("color","black");
+         $(this).css("border","1px solid #ced4da");
+         }
+            
+         });
+         
+         
+         });
+            
+         
+      </script>
+   </body>
+</html>

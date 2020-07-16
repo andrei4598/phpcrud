@@ -1,0 +1,28 @@
+
+
+
+body {
+    /* dove sta l'immagine */
+    background-image: url(img/sfondo1.png);
+    
+   
+    background-position: center center;
+    
+    /* l'immagine non si ripete */
+    background-repeat: no-repeat;
+    
+    /* l'immagine non si muove */
+    background-attachment: fixed;
+    
+    /* l'immagine si 'resize' a seconda della grandezza del container */
+    background-size: cover;
+    
+    /* colore del background che appare prima ancora che si carichi l'immagine */
+    background-color: orange;
+    
+   
+  }
+
+
+      
+    

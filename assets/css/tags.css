@@ -1,0 +1,70 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  
+  /* Center website */
+  .main {
+    max-width: 1000px;
+    margin: auto;
+  }
+  
+  h1 {
+    font-size: 50px;
+    word-break: break-all;
+  }
+  
+  .row {
+    margin: 8px -16px;
+  }
+  
+  /* padding tra le colonne */
+  .row,
+  .row > .column {
+    padding: 8px;
+  }
+  
+  /* crea grandezza di colonne uguale */
+  .column {
+    float: left;
+    width: 33.33%;
+    display: none; /* nasconde le colonne in default */
+  }
+  
+  /* Clear floats after rows */ 
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Content */
+  .content {
+    background-color: white;
+    padding: 10px;
+  }
+  
+  
+  .show {
+    display: block;
+  }
+  
+  /* stile dei bottoni */
+  .btn {
+    border: none;
+    outline: none;
+    padding: 12px 16px;
+    background-color: white;
+    cursor: pointer;
+  }
+  
+  /* colore col mouse over */
+  .btn:hover {
+    background-color:  rgba(252, 125, 125, 0.9999);
+  }
+  
+  /* colore del bottone attivo */
+  .btn.active {
+    background-color:red;
+     color: white;
+  }
