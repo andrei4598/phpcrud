@@ -226,6 +226,7 @@ function login($param)
 			session_start();
 			$_SESSION["favcolor"] = "green";
 			$_SESSION["loggato"] =session_id();
+			$_SESSION['name']=$arr["email"];
         }
         mysqli_free_result($result);
     }

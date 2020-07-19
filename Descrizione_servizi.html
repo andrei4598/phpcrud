@@ -275,6 +275,65 @@
      </div>
 </div>
 
+<p>
+  <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample7" role="button" aria-expanded="false" aria-controls="collapseExample7">
+   Crea richiesta gruppo
+  </a>
+</p>
+
+<div class="collapse" id="collapseExample7">
+  <div class="card card-body">
+  Dalla pagina http://localhost/phpcrud/mappa.html cliccando il pulsante "Invia Richiesta" viene invocato in AJAX una chiamata alla pagina <br>
+  http://localhost/phpcrud/servizi_bgnotes.php <br>
+  Alla pagina sopra citata vengono passati in POST 2 parametri : <br>
+  nome_servizio : "add_ricerca_gruppo"  | semplice stringa <br>
+  parametri : JSON.stringify(obj) | JSON.stringify(obj) | array formattato in una stringa di tipo JSON, dentro l'array inseriremo "nome","email","categoria","commento","latitudine","longitudine" .<br><br>
+  
+  Il servizio risponderà con le variabili : <br>
+  statusCode  | codice di risposta della chiamata ( 404 risorsa non trovata, 200 richiesta andata con successo, 403 non autorizzato ecc ) <br><br>
+  success | data - conterrà la risposta che il servizio chiamato ci manderà se la richiesta è andata a buon fine <br><br>
+	   | data se la richiesta è andata a buon fine il server risponderà con "Richiesta inserita con successo" e verranno salvati sul database i dati relativi alla richiesta. <br><br>
+  error : data - conterrà il messaggio che ha causato l'errore nell'esito della richiesta.
+  <br><br>
+  
+  esempio chiamata :<br>
+ var obj = {};<br>
+	obj.nome= $("#from_name").val();<br>
+	obj.email = $("#from_email").val();<br>
+	obj.telefono = $("#from_phone").val();<br>
+	obj.categoria = $("#Materieinteressate").val();<br>
+	obj.commento = $("#comments").val();<br>
+    obj.latitudine=position.coords.latitude;<br>
+    obj.longitudine=position.coords.longitude;<br>
+     $.ajax({<br>
+         type: "POST",<br>
+         url: "http://localhost/phpcrud/servizi_bgnotes.php",<br>
+         data: { nome_servizio: "add_ricerca_gruppo",parametri:JSON.stringify(obj) },<br>
+         success: function(data) {<br>
+		 }<br>
+		 });
+     </div>
+</div>
+
+<p>
+  <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample8" role="button" aria-expanded="false" aria-controls="collapseExample8">
+   Vedi richiesta gruppo
+  </a>
+</p>
+
+<div class="collapse" id="collapseExample8">
+  <div class="card card-body">
+  Dalla pagina http://localhost/phpcrud/mappa.html cliccando il pulsante "Vedi" (ottenuto nella precedente richiesta che genera la tabella) viene invocato una chiamata ad un API esterna<br>
+  https://api.mapbox.com/ ,(servizio fornito da mapbox che utilizza Open Street Map come alternativa Open-Source a Google-Maps<br>
+  Per avere accesso all'api di mapbox dovrò fornirgli un <br>
+  access_token | token necessario per l'autenticazione per l'utilizzo del servizio esterno - questo token viene utilizzato da un servizio offerto da Leaflet<br>
+  latitude | stringa per identificare la posizione<br>
+  longidutde | stringa per identificare la posizione <br><br>
+  
+  
+  Il servizio risponderà con l'esito della chiamata, se lo status è 200, ci ritornerà la mappa con la posizione fissata sulle coordinate richieste.
+     </div>
+</div>
 
              
         </section>

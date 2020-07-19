@@ -1,0 +1,503 @@
+<?php 
+session_start();
+if (!isset($_SESSION['name'])) {
+	header("location: name.php");
+}
+$name = $_SESSION['name'];
+?>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Ricerca Gruppi</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aclonica">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Adamina">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Akronim">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/simple-line-icons.min.css">
+    <link rel="stylesheet" href="assets/css/carica2.css">
+    <link rel="stylesheet" href="assets/css/Contact-FormModal-Contact-Form-with-Google-Map.css">
+    <link rel="stylesheet" href="assets/css/Drag-Drop-File-Upload.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
+    <link rel="stylesheet" href="assets/css/login.css">
+    <link rel="stylesheet" href="assets/css/Map-Clean.css">
+    <link rel="stylesheet" href="assets/css/Navigation-with-Search.css">
+    <link rel="stylesheet" href="assets/css/reimpostapassword.css">
+    <link rel="stylesheet" href="assets/css/smoothproducts.css">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="">
+	<title>hello chating realtime</title>
+	<script src="jquery.min.js"></script>
+	<style type="text/css">
+		body{
+			background: #edeff1;
+		    font-family: sans-serif;
+		}
+		#chating{
+		    height: 280px;
+		    overflow: auto;
+		}
+		#msgField{
+			position: absolute;
+		    bottom: 0;
+		    left: 0;
+		    right: 0;
+		    width: 100%;
+		    padding: 8px;
+		    outline: none;
+		    box-sizing: border-box;
+		}
+		#uStatus{
+		    margin: 0;
+		    padding: 8px;
+		    background: #e6e6e6;
+		}
+		#chatBox{
+		    background: white;
+		    height: 500px;
+		    width: 260px;
+			right: 0px;
+		    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.08);
+		    position: fixed;
+		    bottom: 0;
+		    margin: 0px 10px;
+		    border-radius: 2px;
+		    border: 1px solid #c7c7c7;
+		}
+		#user{
+			background: #36a7ec;
+		    color: white;
+		    padding: 8px 10px;
+		    width: auto;
+		    display: -webkit-inline-box;
+		    margin: 8px;
+		    border-radius: 20px;
+		}
+		#user2{
+			background: #edeff1;
+		    color: gray;
+		    padding: 8px 10px;
+		    width: auto;
+		    display: -webkit-inline-box;
+		    margin: 8px;
+		    border-radius: 20px;
+		}
+		p{
+			margin: 0;
+		}
+		#typing{
+			display: none;
+		}
+
+	.my-custom-scrollbar {
+position: relative;
+height: 568px;
+overflow:auto;
+}
+.table-wrapper-scroll-y {
+display: block;
+}
+.scrollbar
+{
+	margin-left: 30px;
+	float: left;
+	height: 300px;
+	width: 65px;
+	background: #F5F5F5;
+	overflow-y: scroll;
+	margin-bottom: 25px;
+}
+.force-overflow
+{
+	min-height: 450px;
+}
+#divRicercaDb::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+	border-radius: 10px;
+}
+
+#divRicercaDb::-webkit-scrollbar
+{
+	width: 10px;
+	background-color: #F5F5F5;
+}
+
+#divRicercaDb::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	background-image: -webkit-gradient(linear,
+									   left bottom,
+									   left top,
+									   color-stop(0.44, rgb(122,153,217)),
+									   color-stop(0.72, rgb(73,125,189)),
+									   color-stop(0.86, rgb(28,58,148)));
+}
+	</style>
+	<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script><script>(function inject() {
+        var open = XMLHttpRequest.prototype.open;
+
+        XMLHttpRequest.prototype.open = function () {
+          this.requestMethod = arguments[0];
+          open.apply(this, arguments);
+        };
+
+        var send = XMLHttpRequest.prototype.send;
+
+        XMLHttpRequest.prototype.send = function () {
+          var onreadystatechange = this.onreadystatechange;
+
+          this.onreadystatechange = function () {
+            function GenerateQuickId() {
+              var randomStrId = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+              return randomStrId.substring(0, 22);
+            }
+
+            try {
+              if (this.readyState === 4) {
+                var id = 'detector';
+                var mes = {
+                  posdMessageId: 'PANELOS_MESSAGE',
+                  posdHash: GenerateQuickId(),
+                  type: 'VIDEO_XHR_CANDIDATE',
+                  from: id,
+                  to: id.substring(0, id.length - 2),
+                  content: {
+                    requestMethod: this.requestMethod,
+                    url: this.responseURL,
+                    type: this.getResponseHeader('content-type'),
+                    content: this.response
+                  }
+                };
+                window.postMessage(mes, '*');
+              }
+            } catch (e) {}
+
+            if (onreadystatechange) {
+              return onreadystatechange.apply(this, arguments);
+            }
+          };
+
+          return send.apply(this, arguments);
+        };
+      })();</script>
+   
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar" style="filter: saturate(200%);font-family: Akronim, cursive;font-size: 12px;height: 90.375px;">
+        <div class="container"><a class="navbar-brand logo" href="home.html" style="font-family: Akronim, cursive;font-size: 37px;color: rgba(6,3,0,0.9);width: 73.9531px;letter-spacing: 5px;">BGnotes</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div
+                class="collapse navbar-collapse" id="navcol-1" style="font-family: Montserrat, sans-serif;width: 987.312px;height: 24px;margin: -1px;padding: -35px;">
+                <ul class="nav navbar-nav ml-auto" style="width: 345px;height: 37px;margin-left: 127.234px;margin-bottom: 0px;margin-right: 0px;margin-top: 0px;">
+                
+                </ul>
+                 <ul class="nav navbar-nav">
+                    <li class="nav-item" role="presentation" style="width: 32px;height: 35px;margin-right: 48px;"><a class="nav-link active " href="home.html" style="font-family: Adamina, serif;">HOME</a></li>
+                    <li class="nav-item" id="navLogin" role="presentation"><a class="nav-link active" href="loginp.html" style="font-family: Adamina, serif;">LOG IN</a></li>
+                    <li class="nav-item" id="navRegistrati" role="presentation"><a class="nav-link active" href="registration.html" style="font-family: Adamina, serif;">REGISTRATI</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="about-us.html" style="font-family: Adamina, serif;">ABOUT US</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="faq.html" style="font-family: Adamina, serif;width: 75.9375px;">FAQ</a></li>
+					<li class="nav-item" id="navLoggato" role="presentation"></li>
+                </ul>
+        </div>
+        </div>
+    </nav>
+    <div class="map-clean" id="divPrincipale" style="background-image: url(assets/img/sfondo1.png)">
+        <div class="container">
+            <div class="intro">
+                <h2 class="text-center">Location </h2>
+                <p class="text-center" style="color: rgba(0,0,0,0.6);font-family: Adamina, serif;">Se hai bisogno di confrontarti con altri studenti che seguono i tuoi stessi corsi, adesso con noi hai la possibilità di trovarti un gruppo studio nei dintorni!</p>
+            </div>
+        </div>
+            <div><input class="form-control" type="hidden" name="Introduction" value="This email was sent from www.mywebsite.com"><input class="form-control" type="hidden" name="subject" value="My Contact Form"><input class="form-control" type="hidden" name="to"
+                    value="email@mywebsite.com">
+                <div class="form-row">
+                    <div class="col-md-6" id="message">
+                        <fieldset>
+                            <legend style="font-family: Adamina, serif;"><i class="fa fa-users"></i>&nbsp;Trova il tuo gruppo di studio, compilando il form:</legend>
+                        </fieldset>
+                        <div class="form-group has-feedback"><label for="from_name">Nome</label><input class="form-control" type="text" id="from_name" tabindex="-1" name="from_name" required="" placeholder="Nome intero"></div>
+                        <div class="form-group has-feedback"><label for="from_email">Email</label><input class="form-control" type="email" id="from_email" name="from_email" required="" placeholder="Indirizzo Email"></div>
+                        <div class="form-row">
+                            <div class="col-sm-6">
+                                <div class="form-group has-feedback"><label for="from_phone">Numero di telefono:</label><input class="form-control" type="text" id="from_phone" name="from_phone" placeholder="Numero di telefono"></div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group"><label for="calltime">Scegli la materia che ti serve:</label><select class="form-control" id="Materieinteressate" name="Materia:"><option value="Matematica" selected="">Matematica</option><option value="Chimica">Chimica</option><option value="Fisica">Fisica</option><option value="Informatica">Informatica</option><option value="Filosofia">Filosofia</option><option value="Programmazione">Programmazione</option><option value="Inglese">Inglese</option><option value="Lettere">Lettere</option></select></div>
+                            </div>
+                        </div>
+                        <div class="form-group"><label for="comments">Commento:</label><textarea class="form-control" id="comments" name="Comments" placeholder="spiega più precisamente cosa cerchi: (facoltativo)" rows="5"></textarea></div>
+                        <div class="form-group"><button class="btn btn-primary btn-block" id="btnSend" type="button">Invia richiesta <i class="fa fa-chevron-circle-right"></i></button></div>
+                        <hr>
+                        <legend> <i class="fa fa-location-arrow"></i>&nbsp; Avrai nuovi amici con cui studiare!</legend>
+                    </div>
+					
+					<div class="table-wrapper-scroll-y my-custom-scrollbar" style="max-width: 850px;" id="divRicercaDb">
+                        
+                    </div>
+                </div>
+				
+
+                    
+
+            </div>
+			<div id="divMappa">
+			 <div id="mapid" style="width: 100%;right:270px; height: 500px; position: relative; outline: none;" ></div>
+			 
+			</div>
+        </div>
+		
+		
+		
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+    <script src="assets/js/smoothproducts.min.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <script src="assets/js/Contact-FormModal-Contact-Form-with-Google-Map.js"></script>
+    <script src="assets/js/untitled.js"></script>
+	
+   <script>
+  
+    $(document).ready(function()
+{
+
+var obj = {};
+	obj.nome= " ";
+
+     $.ajax({
+         type: "POST",
+         url: "http://localhost/phpcrud/servizi_bgnotes.php",
+         data: { nome_servizio: "get_gruppi",parametri:JSON.stringify(obj) },
+         success: function(data) {
+			document.getElementById('divRicercaDb').innerHTML = data;
+         }
+      });
+	  
+	  
+	   $.ajax({
+         type: "POST",
+         url: "http://localhost/phpcrud/servizi_bgnotes.php",
+         data: { nome_servizio: "get_gruppi_form_mappa",parametri:JSON.stringify(obj) },
+         success: function(data) {
+			var myArray = JSON.parse(data);
+			
+			var latitude=myArray[0].latitudine;
+			var longitude=myArray[0].longitudine;
+			var mymap = L.map('mapid').setView([latitude,longitude], 12);
+
+	L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+		maxZoom: 18,
+		attribution: '© BGnotes 2020  -<a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+			'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+			'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+		id: 'mapbox/streets-v11',
+		tileSize: 512,
+		zoomOffset: -1
+	}).addTo(mymap);
+	
+	
+			for (var i = 0; i < myArray.length; i++) {
+			
+			latitude=myArray[i].latitudine;
+			longitude=myArray[i].longitudine;
+	
+
+	L.marker([latitude, longitude]).addTo(mymap)
+		.bindPopup("<h4><b>Ciao, sono "+myArray[i].nome+"!</b></h4><br/><b>Email: </b>"+myArray[i].email+"<br/><b>Telefono: </b>"+myArray[i].telefono+"<br />Mi trovo approssimamante qui.").openPopup();
+
+	L.circle([latitude, longitude], 2500, {
+		color: '#fd7e16',
+		fillColor: '#fd7e14',
+		fillOpacity: 0.2
+	}).addTo(mymap).bindPopup("Sto cercando un gruppo di studio in quest'area<br/><b>Mi interessa la categoria: </b>"+myArray[i].categoria+"<br/><b>Commento: </b>"+myArray[i].commento);
+
+
+	var popup = L.popup();
+
+
+	mymap.on('click', onMapClick);
+
+				
+			
+			}
+			
+	var popup = L.popup();
+
+	function onMapClick(e) {
+		popup
+			.setLatLng(e.latlng)
+			.setContent("Hai cliccato la mappa nella posizione " + e.latlng.toString())
+			.openOn(mymap);
+	}
+
+	mymap.on('click', onMapClick);
+	$( "#mymap2" ).dialog();
+         }
+      });
+	  
+
+	  
+	  
+var firstreq = "true";
+  $("#btnSend").click(function(){
+	
+	
+	if (navigator.geolocation) {
+    navigator.geolocation.watchPosition(showPosition);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+  
+
+    
+function showPosition(position) {
+if(firstreq=="false")
+{
+	return;
+}
+firstreq="false";
+var obj = {};
+	obj.nome= $("#from_name").val();
+	obj.email = $("#from_email").val();
+	obj.telefono = $("#from_phone").val();
+	obj.categoria = $("#Materieinteressate").val();
+	obj.commento = $("#comments").val();
+    obj.latitudine=position.coords.latitude;
+    obj.longitudine=position.coords.longitude;
+     $.ajax({
+         type: "POST",
+         url: "http://localhost/phpcrud/servizi_bgnotes.php",
+         data: { nome_servizio: "add_ricerca_gruppo",parametri:JSON.stringify(obj) },
+         success: function(data) {
+            alert("Richiesta inviata con successo");
+			var obj = {};
+	obj.nome= " ";
+
+     $.ajax({
+         type: "POST",
+         url: "http://localhost/phpcrud/servizi_bgnotes.php",
+         data: { nome_servizio: "get_gruppi",parametri:JSON.stringify(obj) },
+         success: function(data) {
+            // on successfull return it will alert the data 
+			document.getElementById('divRicercaDb').innerHTML = data;
+         }
+      });
+         }
+      });
+ 
+  }
+ });
+});
+   </script>
+  
+ <script type="text/javascript"  src="assets/js/GestioneCookie.js">
+	</script>
+	<script>
+	isLogged();
+	</script>
+   <script>
+	
+   function showMappa(a) {
+   try {
+   var elem = document.getElementById('mapid');
+		elem.parentNode.removeChild(elem);
+	}
+	catch(err) {
+
+	}
+
+//con questo resetto la mappa a ogni click .
+ document.getElementById("divMappa").innerHTML = '<div id="mapid2" style="width: 100%;right:270px;height: 500px; position: relative; outline: none;"></div>';
+ 
+
+
+
+
+
+	document.getElementById("mapid2").style.display = "block";
+	
+	var res = a.replace(/&apos/gi, '"');
+	var obj = JSON.parse(res);
+	var latitude=obj.latitudine;
+	var longitude=obj.longitudine;
+	
+	var mymap = L.map('mapid2').setView([latitude,longitude], 13);
+
+	L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+		maxZoom: 18,
+		attribution: '© BGnotes 2020  -<a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+			'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+			'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+		id: 'mapbox/streets-v11',
+		tileSize: 512,
+		zoomOffset: -1
+	}).addTo(mymap);
+
+	L.marker([latitude, longitude]).addTo(mymap)
+		.bindPopup("<h4><b>Ciao, sono "+obj.nome+"!</b></h4><br/><b>Email: </b>"+obj.email+"<br/><b>Telefono: </b>"+obj.telefono+"<br />Mi trovo approssimamante qui.").openPopup();
+
+	L.circle([latitude, longitude], 2500, {
+		color: '#fd7e16',
+		fillColor: '#fd7e14',
+		fillOpacity: 0.5
+	}).addTo(mymap).bindPopup("Sto cercando un gruppo di studio in quest'area<br/><b>Mi interessa la categoria: </b>"+obj.categoria+"<br/><b>Commento: </b>"+obj.commento);
+
+
+	var popup = L.popup();
+
+	function onMapClick(e) {
+		popup
+			.setLatLng(e.latlng)
+			.setContent("Hai cliccato la mappa nella posizione " + e.latlng.toString())
+			.openOn(mymap);
+	}
+
+	mymap.on('click', onMapClick);
+	$( "#mymap2" ).dialog();
+}
+   </script>
+   <div  id="chatBox">
+		<div><p id="uStatus">Connecting...</p></div>
+		<div id="chating"><div id="chatingIn"></div></div>
+		<div><input type="text" name="msg" id="msgField" /></div>
+	</div>
+	<script type="text/javascript">
+		var conn = new WebSocket('ws://localhost:8080');
+		conn.onopen = function(e) {
+		    $('#uStatus').html("<?php echo $name; ?> <span style='color:green;'>[Benvenuto]</span>");
+			
+
+		};
+
+		conn.onmessage = function(e) {
+		    $('#chatingIn').append("<p><span id='user2'>"+e.data+"</span></p>");
+		  	$('#chating').animate({scrollTop:$('#chatingIn').height()}, 0);
+		};
+		$("#msgField").keypress(function(e) {	  
+		e.preventDefault;
+		var key = e.which;
+		//alert("nome"+nome);
+		var MyJ= "<?php Print($name); ?>";
+		
+		var msgField = $("#msgField").val();
+		if(key == 13) 
+		  {
+		    $("#chatingIn").append("<p align='right'><span id='user'><span style='color:red;'>"+MyJ+"</span>: "+msgField+"</span></p>");
+		    conn.send("<span style='color:blue;'>"+MyJ+"</span>:"+msgField);
+		    $("#msgField").val("");
+		    $('#chating').animate({scrollTop:$('#chatingIn').height()}, 0); 
+			return false;
+		  }
+	});
+	</script>
+</body>
+
+</html>
